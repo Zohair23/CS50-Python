@@ -52,21 +52,21 @@ print(f"b is {b}")
 
 
 
-#Improvement, to save it as a function
+#Improvement, to save it as a function & other improvements
 def main():
-    user_input = get_int()
+    user_input = get_int("What's c? ") #so that we don't need to define again the function
     print(f"c is {user_input}")
 
-def get_int():
+def get_int(prompt): #parameter prompt -> "What's c? "
     while True:
         try:
-            c = int(input("What's c? "))
+            return int(input(prompt)) # this is congested, but it saves space, you could just
+                                            # add an else at the end and return from there, but here
+                                            # we don't even assign a variable we just return it if it works
+                                            # prompt here is just the question for the user
         except ValueError:
-            print("c is not an integer")
-        else: #add an else
-            break #we dont need to print here, because it would keep repeating until we get the right value
-                  #then we break
-    
-    return c
+            pass # here instead of typing something to the user, and 
+                 # repeatedly saying print("c is not an integer"), we just let it go, but we
+                 # still acknowledge the error and catch it
 
 main()
